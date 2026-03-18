@@ -8,7 +8,7 @@ A full-stack tool that takes raw CSV sales data, aggregates total sales by depar
 
 ```
 CSV parser/
-├── backend/          # Express API server (TypeScript)
+├── backend/         
 │   ├── src/
 │   │   ├── index.ts              # API routes & server entry point
 │   │   ├── jobStore.ts           # In-memory job registry with disk persistence
@@ -18,7 +18,7 @@ CSV parser/
 │   │       └── csvProcessor.test.ts
 │   └── package.json
 │
-└── frontend/         # Next.js 16 / React 19 app (TypeScript)
+└── frontend/        
     ├── src/
     │   ├── app/
     │   │   ├── page.tsx          # Main page — ties everything together
@@ -79,10 +79,6 @@ The test suite:
 ---
 
 ## Algorithm Explanation & Memory Efficiency
-
-### The Core Problem
-
-The input can be an arbitrarily large CSV file. A naive approach — loading the entire file into memory as a JavaScript array — would run out of memory on large datasets.
 
 ### The Streaming Aggregation Approach
 
@@ -154,15 +150,3 @@ In practice **D ≪ N** (e.g., 15 departments across millions of rows), so the m
 | `DELETE` | `/api/analysis/:id` | Remove a job and its output files |
 
 ---
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | Next.js 16, React 19, TypeScript |
-| Charts | Recharts |
-| Backend | Express 5, TypeScript, ts-node |
-| Processing | Node.js Worker Threads |
-| File handling | Multer, csv-parser |
-| Testing | Jest, ts-jest, Supertest |
-| Export | xlsx, html2pdf.js |
